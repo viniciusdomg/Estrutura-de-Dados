@@ -99,6 +99,15 @@ class Lista{
     length(){
         return this.size;
     }
+    toString(){
+        let aux = this.head.proximo;
+        let resultado = "";
+        for(let i=0; i<this.length(); i++){
+            resultado += aux.dado;
+            aux = aux.proximo;
+        }
+        return resultado;
+    }
 }
 
 export default Lista;
