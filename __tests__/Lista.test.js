@@ -2,6 +2,7 @@ import Lista from "../src/Lista";
 import Pilhadinamica from "../lista03/PilhacomLista";
 import Filadinamica from "../lista03/FilacomLista";
 import inverteLista from "../lista03/InverteLista";
+import ArraydeNos from "../lista03/ArraydeNos";
 
 let l;
 let p;
@@ -13,74 +14,74 @@ beforeEach(
     }
 )
 
-// test("Inserções nas lista",
-//     () => {
-//         l.add(2);
-//         l.add(1);
-//         expect(l.search(1)).toBe(1);
-//         expect(l.search(2)).toBe(2);
-//         l.append(3);
-//         expect(l.search(3)).toBe(3);
-//         l.add(5);
-//         expect(l.search(5)).toBe(1);
-//         l.append(4);
-//         expect(l.search(4)).toBe(5);
-//         l.addAt(12,2);
-//         expect(l.search(12)).toBe(2);
+test("Inserções nas lista",
+    () => {
+        l.add(2);
+        l.add(1);
+        expect(l.search(1)).toBe(1);
+        expect(l.search(2)).toBe(2);
+        l.append(3);
+        expect(l.search(3)).toBe(3);
+        l.add(5);
+        expect(l.search(5)).toBe(1);
+        l.append(4);
+        expect(l.search(4)).toBe(5);
+        l.addAt(12,2);
+        expect(l.search(12)).toBe(2);
 
-//     }
-// )
+    }
+)
 
-// test("Remoções na lista",
-//     () => {
-//         l.append(1);
-//         l.append(2);
-//         l.append(3);
-//         l.append(4);
-//         l.append(5);
-//         l.removeLast();
-//         expect(l.search(5)).toBe("Elemento não encontrado");
-//         expect(l.length()).toBe(4);
-//         l.removeFirst();
-//         expect(l.search(2)).toBe(1);
-//         expect(l.length()).toBe(3);
-//         l.removeAt(2);
-//         expect(l.search(2)).toBe(1);
-//         expect(l.search(4)).toBe(2);
-//     }
-// )
+test("Remoções na lista",
+    () => {
+        l.append(1);
+        l.append(2);
+        l.append(3);
+        l.append(4);
+        l.append(5);
+        l.removeLast();
+        expect(l.search(5)).toBe("Elemento não encontrado");
+        expect(l.length()).toBe(4);
+        l.removeFirst();
+        expect(l.search(2)).toBe(1);
+        expect(l.length()).toBe(3);
+        l.removeAt(2);
+        expect(l.search(2)).toBe(1);
+        expect(l.search(4)).toBe(2);
+    }
+)
 
-// test("Pilha dinâmica",
-//     () => {
-//         p = new Pilhadinamica();
-//         p.push('A');
-//         expect(p.top()).toBe('A');
-//         p.push('B');
-//         expect(p.top()).toBe('B');
-//         p.push('C');
-//         p.pop();
-//         expect(p.top()).toBe('B');
-//         expect(p.toString()).toBe('AB');
-//         p.pop();
-//         p.pop();
-//         expect(() => p.pop()).toThrow("Stackunderflow");
-//     }
-// )
+test("Pilha dinâmica",
+    () => {
+        p = new Pilhadinamica();
+        p.push('A');
+        expect(p.top()).toBe('A');
+        p.push('B');
+        expect(p.top()).toBe('B');
+        p.push('C');
+        p.pop();
+        expect(p.top()).toBe('B');
+        expect(p.toString()).toBe('AB');
+        p.pop();
+        p.pop();
+        expect(() => p.pop()).toThrow("Stackunderflow");
+    }
+)
 
-// test("Fila dinamica",
-//     () => {
-//         f = new Filadinamica();
-//         f.enqueue('A');
-//         f.enqueue('B');
-//         expect(f.front()).toBe('A');
-//         f.enqueue('C');
-//         expect(f.toString()).toBe('ABC');
-//         f.dequeue();
-//         expect(f.toString()).toBe('BC');
-//         f.clear();
-//         expect(() => f.dequeue()).toThrow("Queueunderflow");
-//     }
-// )
+test("Fila dinamica",
+    () => {
+        f = new Filadinamica();
+        f.enqueue('A');
+        f.enqueue('B');
+        expect(f.front()).toBe('A');
+        f.enqueue('C');
+        expect(f.toString()).toBe('ABC');
+        f.dequeue();
+        expect(f.toString()).toBe('BC');
+        f.clear();
+        expect(() => f.dequeue()).toThrow("Queueunderflow");
+    }
+)
 
 test("Invertendo valores de uma lista",
     () => {
@@ -91,5 +92,25 @@ test("Invertendo valores de uma lista",
         l.append('D');
         inverteLista(l);
         expect(l.toString()).toBe('DDCBA');
+    }
+)
+
+test("Usando um array para implementar uma lista",
+    () => {
+        let a = new ArraydeNos();
+        a.add('A');
+        a.append('B')
+        expect(a.toString()).toBe("AB");
+        a.append('C')
+        expect(a.toString()).toBe("ABC");
+        a.removeFirst();
+        expect(a.toString()).toBe("BC");
+        a.removeLast();
+        expect(a.toString()).toBe("B");
+        a.append('D');
+        a.append('E');
+        a.removeAt(2);
+        expect(a.toString()).toBe("BE");
+        expect(a.search('E')).toBe("E");
     }
 )

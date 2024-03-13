@@ -1,4 +1,4 @@
-import Node from "./No";
+import Node from "./No.js";
 class Lista{
     constructor(){
         this.head = new Node();
