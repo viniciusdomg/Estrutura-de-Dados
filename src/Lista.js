@@ -108,6 +108,15 @@ class Lista{
         }
         return resultado;
     }
+    asArray() {
+        let resultado = [];
+        let aux = this.head.proximo;
+        while (aux !== null) {
+            resultado.push(aux.dado);
+            aux = aux.proximo;
+        }
+        return resultado;
+    }
 }
 
 export default Lista;
